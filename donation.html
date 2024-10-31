@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate to BCC</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+    <header class="header">
+        <section class="donation">
+            <h1 class="header__h1 nowrap">Join Us</h1>
+            
+        </section>
+        <nav class="header__nav">
+            <img src="img/logo.svg" alt="companylogo" class="header__logo" width="200" height="70">
+            <ul class="nav__ul">
+                <li><a href="/">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="supporters.html">Supporters</a></li>
+                <li><a class="currentPage" href="contact.html">Contact</a></li>
+                <li><a class="nav__donateLink" href="donation.html">Donate</a></li>
+            </ul>
+            <a class="blueBtn header__donateBtn" href="donation.html">
+                <span class="blueBtn__heartSymbol">♡</span> 
+                <span class="blueBtn__btnTxt header__btnTxt uppercase">Donate</span>
+            </a> 
+            <div class="header__menuBtn" onclick="toggleMenu()">
+                <div class="header__menuIcon"></div>
+
+            </div>        
+        </nav>
+            
+
+    </header>
+    <section class="content">
+        <div class="donationh1">
+            <h1>Transforming Lives, One Donation at a Time.</h1>
+        </div>
+        <!--Similarly with contact page, this one also contains a form and I am also using JavaScript
+        function if the user checks for monthly donation. This allows user to see less relevant data  -->
+        <div class="donation-form">
+            <form action="/submit-donation" method="POST">
+                <div class="button-group">
+                    <label>
+                        <input type="radio" name="donationType" value="single" checked onchange="toggleMonthlyOptions()">
+                        One-Time Donation
+                    </label>
+                    <label>
+                        <input type="radio" name="donationType" value="monthly" onchange="toggleMonthlyOptions()">
+                        Monthly Donation
+                    </label>
+                </div>
+                <div class="donation-input">
+                    <label for="amount">Donation Amount (AUD):</label>
+                    <input type="number" id="amount" name="amount" min="1" required>
+
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="cardNumber">Credit Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required>
+
+                    <label for="expiry">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiry" name="expiry" required>
+
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+
+                    <div id="monthlyOptions" style="display: none;">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate" name="startDate" required>
+
+                        <label for="frequency">Payment Frequency:</label>
+                        <select id="frequency" name="frequency">
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class='blueBtn' type="submit">Donate Now</button>
+        </form>
+    </div>
+</section>
+<!-- here is the toggle menu function that opens new part of the form -->
+<script>
+    function toggleMonthlyOptions() {
+        const monthlyOptions = document.getElementById('monthlyOptions');
+        const donationType = document.querySelector('input[name="donationType"]:checked').value;
+        monthlyOptions.style.display = donationType === 'monthly' ? 'block' : 'none';
+    }
+</script>
+
+<footer class="footer">
+    <div class="footer__flexbox">
+    <!--Logo comes here-->
+        <img src="img/logo.svg" alt="companylogo" class="footer__logo" width="200" height="70">
+
+    <div class="socialIcons">
+        <!--Socialmedia icons-->
+        <a href="https://www.facebook.com/bccimpact" target="_blank">
+            <img src="img/facebookicon.png" alt="facebook icon" width="20" height="20"></a>
+        <a href="https://www.instagram.com/thebcc_au" target="_blank">
+        <img src="img/instagram-icon.png" alt="instagram icon" width="20" height="20"></a>
+        <a href="https://www.twitter.com/TheBCC_Org" target="_blank">
+        <img src="img/twitter-icon.png" alt="twitter icon" width="20" height="20"></a>
+        <a href="https://www.youtube.com/channel/UCTP0fSUjONd0N8jEH5Pz5ug" target="_blank">
+        <img src="img/youtube-icon.png" alt="youtube icon" width="20" height="20"></a>
+        <a href="https://www.linkedin.com/company/the-behaviour-change-collaborative/" target="_blank">
+        <img src="img/linkedin-icon.png" alt="linkedin icon" width="20" height="20"></a>
+    </div>
+    <div class="footer__address center">
+        <p><span><b>The Behaviour Change Collaborative</b></span></p>
+            <p>Suite 2, Ground Floor
+            1318 Hay Street
+            West Perth WA 6005</p>
+            <a href="tel:+610863316057"><span class=phoneLink>+61 08 6331 6057</span></a>
+    </div>
+</div>
+        <p class="footer__acknowledgement">The BCC Impact acknowledges the Traditional Owners of the land where we work and pay our respects to elders past, present and emerging.</p>
+        
+        <p class="footer__acknowledgement">&copy; This was a university project by Daisy Leming and the reference list is here:<a href="References.pdf" download> Download the PDF file</a></p>
+</footer>
+<script>
+    function toggleMenu() {
+        const nav = document.querySelector('.nav__ul');
+        const menuBtn = document.querySelector('.header__menuBtn');
+        nav.classList.toggle('active');
+        menuBtn.classList.toggle('hidden'); 
+    }
+
+    document.addEventListener('click', function(event) {
+        const nav = document.querySelector('.nav__ul');
+        const menuBtn = document.querySelector('.header__menuBtn');
+
+        // Check if the clicked target is outside the nav and the menu button
+        if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+            nav.classList.remove('active'); // Close the menu
+            menuBtn.classList.remove('hidden');
+        }
+    });
+</script>
+</body>
+</html>

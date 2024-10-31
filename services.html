@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+    <header class="header">
+        <section class="service">
+            <h1 class="header__h1 nowrap">What we do</h1>
+        <!--This page has similar features as the index page and I don't feel
+        that it is neccessary to explain each line again.  --> 
+        </section>
+        <nav class="header__nav">
+            <img src="img/logo.svg" alt="companylogo" class="header__logo" width="200" height="70">
+            <ul class="nav__ul">
+                <li><a href="/">Home</a></li>
+                <li><a class="currentPage" href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="supporters.html">Supporters</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            <li><a class="nav__donateLink" href="donation.html">Donate</a></li>
+            </ul> 
+            <a class="blueBtn header__donateBtn" href="donation.html">
+                <span class="blueBtn__heartSymbol">♡</span> 
+                <span class="blueBtn__btnTxt header__btnTxt uppercase">Donate</span>
+            </a>
+            <div class="header__menuBtn" onclick="toggleMenu()">
+                <div class="header__menuIcon"></div>
+
+            </div>        
+        </nav>
+            
+
+    </header>
+    <section class="servicemain">
+        <h2>Services</h2>
+            <div class="yellowCont center">
+                <div>
+                    <h3>Research</h3>
+                    <p>Researching individual and collective behaviours and their drivers. Fusce aliquet tempor eros et sollicitudin. Vestibulum mattis ante sit amet augue ornare, at congue orci mollis.</p>
+                </div>
+                <div>
+                    <h3>Develop</h3>
+                    <p>Developing and implementing programs to influence behaviours in the areas of health and its determinants (including social, cultural, behavioural and environmental determinants)
+                    </p>    
+                </div>
+                <div>
+                    <h3>Build</h3>
+                    <p>Building individual, community and organisational capacity to affect positive behavioural change as it pertains to health
+                    </p>
+                </div>
+                <div>
+                    <h3>Promotion</h3>
+                    <p>Promoting and advocating for health equity, including advocating policy changes at government level</p>
+                </div>
+                <div>
+                    <h3>Collaboration</h3>
+                    <p>
+                    Doing all such other things as are necessary to fulfill the company’s objectives, 
+                    including undertaking additional programs or activities and collaborating with 
+                    other organizations with similar goals.
+                    </p>
+                </div>
+            </div>
+        
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer__flexbox">
+        <!--Logo comes here-->
+            <img src="img/logo.svg" alt="companylogo" class="footer__logo" width="200" height="70">
+
+        <div class="socialIcons">
+            <!--Socialmedia icons-->
+            <a href="https://www.facebook.com/bccimpact" target="_blank">
+                <img src="img/facebookicon.png" alt="facebook icon" width="20" height="20"></a>
+            <a href="https://www.instagram.com/thebcc_au" target="_blank">
+            <img src="img/instagram-icon.png" alt="instagram icon" width="20" height="20"></a>
+            <a href="https://www.twitter.com/TheBCC_Org" target="_blank">
+            <img src="img/twitter-icon.png" alt="twitter icon" width="20" height="20"></a>
+            <a href="https://www.youtube.com/channel/UCTP0fSUjONd0N8jEH5Pz5ug" target="_blank">
+            <img src="img/youtube-icon.png" alt="youtube icon" width="20" height="20"></a>
+            <a href="https://www.linkedin.com/company/the-behaviour-change-collaborative/" target="_blank">
+            <img src="img/linkedin-icon.png" alt="linkedin icon" width="20" height="20"></a>
+        </div>
+        <div class="footer__address center">
+            <p><span><b>The Behaviour Change Collaborative</b></span></p>
+                <p>Suite 2, Ground Floor
+                1318 Hay Street
+                West Perth WA 6005</p>
+                <a href="tel:+610863316057"><span class=phoneLink>+61 08 6331 6057</span></a>
+        </div>
+    </div>
+            <p class="footer__acknowledgement">The BCC Impact acknowledges the Traditional Owners of the land where we work and pay our respects to elders past, present and emerging.</p>
+            
+            <p class="footer__acknowledgement">&copy; This was a university project by Daisy Leming and the reference list is here:<a href="References.pdf" download>Download the PDF file</a></p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+            nav.classList.toggle('active');
+        }
+    
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+    
+            // Check if the clicked target is outside the nav and the menu button
+            if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                nav.classList.remove('active'); // Close the menu
+            }
+        });
+    
+        // Event listener for window resize to close the menu
+        window.addEventListener('resize', function() {
+            const nav = document.querySelector('.nav__ul');
+            nav.classList.remove('active'); // Close the menu on resize
+        });
+    </script>
+</body>
+</html>

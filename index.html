@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en"><!-- setting english language -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- ensures responsive design -->
+    <title>BCC: The Behaviour Change Collaborative</title><!-- Main title of the page -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header class="header"><!-- Header section that has navigation and branding and main image -->
+        <section class="impact"><!--class is for styling purposes in css  -->
+            <h1 class="header__h1 nowrap">The <span class="impact__bccText">BCC</span> Impact
+            </h1><!-- The main heading in the page, contains span element for different styling -->
+            <p class="impact__p"><b>We strive to prevent and manage diseases, reduce health disparities,
+                 and amplify the voices of those with lived experience to inform health policy and practice.</b></p>
+            <a class="blueBtn" href="donation.html"><!-- A button element with a link to donation page -->
+                <span class="blueBtn__heartSymbol">♡</span> <!--hearticon  -->
+                <span class="blueBtn__btnTxt">Help us help others</span><!-- button text -->
+            </a>
+        </section><!-- this is a section element that keeps different parts separate -->
+        <nav class="header__nav"><!-- navigation element that contains links to other pages -->
+            <img src="img/logo.svg" alt="companylogo" class="header__logo" width="200" height="70"><!--image with alt text class and sizing  -->
+            <ul class="nav__ul"><!-- unordered list of links to internal pages -->
+                <li><a class="currentPage" href="/">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="supporters.html">Supporters</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            <li><a class="nav__donateLink" href="donation.html">Donate</a></li>
+            </ul> 
+            <a class="blueBtn header__donateBtn" href="donation.html">
+                <span class="blueBtn__heartSymbol">♡</span> 
+                <span class="blueBtn__btnTxt header__btnTxt uppercase">Donate</span>
+            </a>
+            <!--Class that opens a menu with using JavaScript function that reacts to the click  -->
+            <div class="header__menuBtn" onclick="toggleMenu()">
+                <div class="header__menuIcon"></div>
+
+            </div>        
+        </nav>
+            
+
+    </header>
+        
+    <!-- Main content of the page that contains the main elements of the website. 
+     the idea was that the user can get relevant information from the homepage without the 
+     need to go to other pages but if they want so, then they can do so-->
+    <section class="serviceSection">
+        <h2>What We Do</h2>
+        <div class="yellowCont"><!-- classes for css -->
+            <div class="flexboxMain">
+                <div class="flexbox__itemMain flexbox__item--serviceSection">
+                    <img class="rounded" src="img/research.png" alt="people researching" width="800" height="533">
+                    <h3>Research</h3>
+                    <p>Researching individual and collective behaviours and their drivers. Fusce aliquet tempor eros et sollicitudin. Vestibulum mattis ante sit amet augue ornare, at congue orci mollis.</p>
+                  
+                </div>
+
+                <div class="flexbox__itemMain flexbox__item--serviceSection">  
+                    <img class="rounded" src="img/research.png" alt="people researching" width="800" height="533">
+                    <h3>Develop</h3>
+                    <p>Developing and implementing programs to influence behaviours in the areas of health and its determinants (including social, cultural, behavioural and environmental determinants).
+                    </p>
+                    
+                </div>
+               <!--<div id="thirdServiceItem"> I had to add extra div to hide the item because ID is higher than-->
+                <div class="flexbox__itemMain flexbox__item--serviceSection " id="thirdServiceItem">
+                    <img class="rounded" src="img/research.png" alt="people researching" width="800" height="533">
+                    <h3>Build</h3>
+                    <p>Building individual, community and organisational capacity to affect positive behavioural change as it pertains to health.
+                    </p>
+                    
+                </div>
+            </div>
+            <a href="services.html" class="blueBtn hiddenMoreBtn"><span class="blueBtn__btnTxt">More</span></a>
+        </div>
+    </section>
+
+    <section class="aboutSection">
+        <h2>About Us</h2>
+        <div class="yellowCont">
+            <div class="flexboxMain">
+                <div class="aboutSection__textAndBtn">
+                    <h3 class="blueLargeTitle">Who We Are</h3>      
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at placerat velit. Pellentesque lacinia nisl et viverra tincidunt. Mauris gravida, lacus et rhoncus elementum, diam elit varius dui, non varius nulla nulla sit amet neque. Sed tincidunt, nisi ut varius condimentum, nibh quam varius metus, non semper dui diam vel mauris. </p>
+                    <a href="about.html" class="blueBtn"><span class="blueBtn__btnTxt">Read More</span></a><!--This is a button for more information that takes to about us page-->
+                </div>
+                <img class="flexbox__itemMain aboutSection__img" src="img/peoplegrass.png" alt="people sitting on grass" width="1619" height="1080">
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__flexbox">
+        <!--Logo comes here-->
+            <img src="img/logo.svg" alt="companylogo" class="footer__logo" width="200" height="70">
+
+        <div class="socialIcons">
+            <!--Socialmedia icons-->
+            <a href="https://www.facebook.com/bccimpact" target="_blank">
+                <img src="img/facebookicon.png" alt="facebook icon" width="20" height="20"></a>
+            <a href="https://www.instagram.com/thebcc_au" target="_blank">
+            <img src="img/instagram-icon.png" alt="instagram icon" width="20" height="20"></a>
+            <a href="https://www.twitter.com/TheBCC_Org" target="_blank">
+            <img src="img/twitter-icon.png" alt="twitter icon" width="20" height="20"></a>
+            <a href="https://www.youtube.com/channel/UCTP0fSUjONd0N8jEH5Pz5ug" target="_blank">
+            <img src="img/youtube-icon.png" alt="youtube icon" width="20" height="20"></a>
+            <a href="https://www.linkedin.com/company/the-behaviour-change-collaborative/" target="_blank">
+            <img src="img/linkedin-icon.png" alt="linkedin icon" width="20" height="20"></a>
+        </div>
+        <!-- the address -->
+        <div class="footer__address center">
+           <p><span><b>The Behaviour Change Collaborative</b></span></p>
+                <p>Suite 2, Ground Floor
+                1318 Hay Street
+                West Perth WA 6005</p>
+                <!-- this is phone link that opens upp calling function when user clicks on it -->
+                <a href="tel:+610863316057"><span class=phoneLink>+61 08 6331 6057</span></a>
+        </div>
+    </div>
+    <!--aknowledgement  -->
+            <p class="footer__acknowledgement">The BCC Impact acknowledges the Traditional Owners of the land where we work and pay our respects to elders past, present and emerging.</p>
+            <!-- copyright tag with my name and downloadable link for references -->
+            <p class="footer__acknowledgement">&copy; This was a university project by Daisy Leming and the reference list is here:<a href="References.pdf" download> Download the PDF file</a></p>
+    </footer>
+    <!-- Javascript functions for interaction with the menu button -->
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+            nav.classList.toggle('active');
+        }
+    
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+    
+            // Check if the clicked target is outside the nav and the menu button
+            if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                nav.classList.remove('active'); // Close the menu
+            }
+        });
+    
+        // Event listener for window resize to close the menu
+        window.addEventListener('resize', function() {
+            const nav = document.querySelector('.nav__ul');
+            nav.classList.remove('active'); // Close the menu on resize
+        });
+    </script>
+</body>
+</html>

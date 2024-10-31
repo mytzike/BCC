@@ -1,0 +1,1006 @@
+/*This document is created by Daisy Leming. 30/10/2024  */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* This is a font that I am using to style the website, called Outfit */
+
+/* RESET */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;/*This area resets all the browsers default styling
+    so that it is easier for me to manage styling  */
+}
+
+img {/* resetting image styling */
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+input,
+button,
+textarea {
+    font: inherit;/* setting button,input and text area to inherit the main fonts */
+}
+
+
+/* VARIABLES */
+:root {/*:root is a pseudo class which is defining global styles */
+/* creating a list of styles that is later used in css for styling purposes */
+
+    /* BODY WIDTH */
+    --MAX-WIDTH: 1300px;/* main width of the content */
+
+    /* FONTS */
+    --FF:"Outfit", sans-serif;/* fontfamily that is used */
+    --FF-HEADINGS: var(--FF);/* heading fonts */
+    --FS: clamp(0.8em, 1.5vw, 1em);/* --and the name sets a variable that can be used in var() function later
+    clamp () means that the size is clamped in min preferred and max size */
+
+    /* COLORS */
+    /* setting variables for colours that is used later in the css */
+    --BGCOLOR: #E1E194;
+    --FONT-COLOR: #0b0b0b;
+    --BCC-COLOR: #F5DF5D;
+    --YELLOWCONT-COLOR: #f4f49c;
+    --BTN-COLOR: #5D73F5;
+    --BTN-COLOR-HOVER: #8254ff;
+    --BTN-COLOR-ACTIVE: #9900ff;
+    --HEADING-GRADIENT: linear-gradient(to right, #e2cc3a, #7b7125);
+    --NAVBTN-COLOR: whitesmoke;
+    --HEADER-COLOR: rgba(186, 168, 35, 0.85);
+    --NAVMENU-COLOR: rgb(187, 173, 72);
+    --LINK-HOVER: orange;
+    --HEART-HOVER: rgb(255, 84, 84);
+    --LINK-BACKGROUND-HOVER: rgba(255, 255, 255, 0.2);
+    --LINK-ACTIVE: #FFD700;
+    --BORDER-COLOR-LIGHT: rgba(68, 68, 68, 0.1);
+    --BORDER-COLOR-DARK: rgba(68, 68, 68, 0.35);
+    --SERVICEH3-BACK:rgb(227, 227, 227, 0.7);
+
+    /* STANDARD DIMENSIONS *//* Setting main dimensions so that the page looks cohesive */
+    --PADDING-VERTICAL:1em;
+    --PADDING-HORIZONTAL: 1em;
+    --MARGIN: clamp(1em, 2.5vh, 1.5em) 0;
+    --BORDER-RADIUS: 1.5em/* roundness */
+}
+
+/* UTILITY CLASSES *//* reusable classes */
+.offscreen {/*This is used to set something off the screen
+    so the user is not able to see it */
+    position: absolute;
+    left: -10000px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.center {
+    text-align: center;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
+/* GENERAL STYLES */
+html {
+    font-size: var(--FS);/*here is being used a variable with fontsize  */
+    font-family: var(--FF);
+    background-color: var(--BGCOLOR);
+    background-image: var(--BGIMAGE);
+}
+
+body {
+    background-color: var(--BGCOLOR);
+    color: var(--FONT-COLOR);
+    min-height: 100vh;/*settinh minimum viewportheight  */
+    max-width: var(--MAX-WIDTH);
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--FF-HEADINGS);
+    text-align: center;
+}
+
+h2,
+h3 {
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 1.8em;
+    font-weight:800;
+    background: var(--HEADING-GRADIENT);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    line-height: 1.5;
+    text-align: center;
+}
+
+a {
+    color: var(--NAVBTN-COLOR);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+    color: var(--LINK-HOVER);/* defining the links hover and focus */
+}
+
+a:active {
+    color: var(--LINK-ACTIVE);
+}/*when links are clicked var() is used to call it's colour  */
+
+.hidden {
+    display: none;/*class to hide some information  */
+}
+
+.rounded {
+    border-radius: var(--BORDER-RADIUS);/* making rounded edges */
+}
+
+.yellowCont {
+    background-color: var(--YELLOWCONT-COLOR);/*Container with yellow background and flex
+    settings and gap between contents */
+    display: flex;
+    flex-direction: column;
+    gap:2.5em;
+}
+
+.flexboxMain {/*styling a class  */
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    gap: 2em;
+}
+
+.flexbox__itemMain {
+    flex: 1 1 calc(33.33% - 2em);  /* Flex-grow: 1 (expand), flex-shrink: 1 (contract), flex-basis: ~33% of container */
+    padding: 2em 1.5em; 
+    min-width: 250px;
+    text-align: center;
+    
+}
+
+.blueLargeTitle {
+    color: var(--BTN-COLOR); /* Sets the text color using a CSS variable for button color */
+    -webkit-text-fill-color: var(--BTN-COLOR); /* Applies the text fill color (for webkit browsers) */
+    font-size: 1.5em; /* Sets the font size to 1.5 times the parent element's font size */
+    margin: 1em; /* Adds a margin of 1em around the element */
+}
+
+/* BUTTON STYLES */
+.blueBtn {
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
+    align-items: center; /* Vertically centers the items within the flex container */
+    align-self: center; /* Centers the button itself within its parent container */
+    display: flex; /* Uses flexbox for layout */
+    flex-flow: row nowrap; /* Arranges child elements in a row without wrapping */
+    justify-content: center; /* Horizontally centers child elements */
+    gap: 0.3rem; /* Adds a gap of 0.3rem between child elements */
+    background-color: var(--BTN-COLOR); /* Sets the background color using a CSS variable */
+    border-radius: var(--BORDER-RADIUS); /* Applies a border radius using a CSS variable for rounded corners */
+    font-weight: 600; /* Sets the font weight to 600 for bolder text */
+    padding: 0.7em 0.9em; /* Adds vertical (0.7em) and horizontal (0.9em) padding inside the button */
+    box-shadow: 0 0px 3px 1px var(--BORDER-COLOR-DARK); /* Adds a subtle shadow effect to the button */
+}
+
+
+.blueBtn:hover {/* here I am using a pseudoclass :hover */
+    background-color: var(--BTN-COLOR-HOVER); /* Changes background color on hover using a CSS variable for hover state */
+    cursor: pointer; /* Changes the cursor to a pointer to indicate interactivity */
+    color: var(--HEART-HOVER); /* Changes the text color on hover using a CSS variable */
+}
+
+.blueBtn:active {
+    background-color: var(--BTN-COLOR-ACTIVE); /* Changes background color when the button is actively pressed */
+    transform: scale(0.9); /* Scales the button down to 90% of its size for a pressed effect */
+    box-shadow: 0 3px 15px -2px; /* Adds a shadow effect when the button is active, enhancing the visual feedback */
+}
+
+.blueBtn__heartSymbol {
+    font-size: 2em; /* Sets the font size of the heart symbol to 2em for prominence */
+    padding-bottom: 0.3rem; /* Adds space below the heart symbol */
+    margin-top: -0.4em; /* Adjusts the top margin negatively to align the heart symbol better */
+    margin-bottom: -0.45em; /* Adjusts the bottom margin negatively for fine-tuning vertical alignment */
+}
+
+.blueBtn__btnTxt {
+    color: var(--BCC-COLOR); /* Sets the text color using a CSS variable for consistency */
+    padding: 0; /* Resets padding for the button text to avoid unwanted space */
+}
+
+/* HEADER STYLES */
+.header {
+    display: block; /* Sets the header to display as a block element */
+    box-shadow: 0 0px 20px 1px var(--BORDER-COLOR-DARK); /* Adds a dark shadow for depth */
+}
+
+.header__h1 {
+    color: var(--NAVBTN-COLOR); /* Sets the color of the heading using a CSS variable */
+    padding-top: 2em; /* Adds top padding to the heading */
+    text-transform: uppercase; /* Transforms text to uppercase for emphasis */
+    font-size: 5.5vw; /* Sets the font size relative to the viewport width */
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.70)); /* Adds a shadow effect to the text for better visibility */
+}
+
+.header__nav {
+    position: fixed; /* Keeps the navigation bar fixed at the top of the viewport */
+    z-index: 10; /* Sets the stacking order to ensure it appears above other elements */
+    top: 0; /* Positions the navigation bar at the top of the page */
+    left: 50%; /* Positions the navigation bar horizontally centered */
+    transform: translateX(-50%); /* Centers the navigation bar by shifting it left */
+    width: 100%; /* Sets the width to 100% of the viewport */
+    max-width: var(--MAX-WIDTH); /* Limits the maximum width using a CSS variable */
+    background-color: var(--HEADER-COLOR); /* Sets the background color using a CSS variable */
+    display: flex; /* Uses flexbox for layout */
+    flex-direction: column; /* Arranges items in a column */
+    justify-content: center; /* Centers items vertically */
+    align-items: center; /* Centers items horizontally */
+    box-shadow: 0 0px 5px 1px var(--BORDER-COLOR-LIGHT); /* Adds a light shadow for subtle depth */
+    padding: var(--PADDING-VERTICAL) var(--PADDING-HORIZONTAL); /* Adds padding using CSS variables for vertical and horizontal spacing */
+}
+
+.nav__ul {
+    display: none; /* Hides the navigation list by default */
+}
+
+/* Animation for showing the menu */
+@keyframes showMenu {
+    0% {
+        transform: scaleY(0); /* Starts the menu scaled down to 0 (hidden) */
+    }
+    100% {
+        transform: scaleY(1); /* Ends the animation scaled to its full size (visible) */
+    }
+}
+
+/* Show the menu when active */
+.nav__ul.active {
+    font-weight: 600; /* Sets the font weight to 600 for emphasis */
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 1)); /* Adds a shadow effect to the menu items */
+    list-style-type: none; /* Removes bullet points from the list */
+    flex-flow: column nowrap; /* Arranges items in a column without wrapping */
+    padding-top: 1em; /* Adds padding to the top of the menu */
+    display: block; /* Displays the menu as a block element */
+    text-align: center; /* Centers the text inside the menu */
+    font-size: 2em; /* Sets the font size of menu items */
+    text-transform: uppercase; /* Transforms text to uppercase for consistency */
+    letter-spacing: 0.1em; /* Adds spacing between letters for readability */
+    width: 100vw; /* Sets the width to 100% of the viewport width */
+}
+
+/* Styles for active navigation links */
+.nav__ul.active a {
+    display: block; /* Display active links as block elements */
+}
+
+/* Styles for list items in the active navigation */
+.nav__ul.active li {
+    padding: 0.5rem; /* Add padding to list items */
+    border-bottom: 1px solid var(--BORDER-COLOR-DARK); /* Add a bottom border */
+}
+
+/* Styles for the header logo */
+.header__logo {
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.75)); /* Apply a shadow effect */
+    width: 10em; /* Set the width of the logo */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Styles for the menu button in the header */
+.header__menuBtn {
+    position: fixed; /* Fix the position in the viewport */
+    top: 1.1em; /* Position from the top */
+    right: 2em; /* Position from the right */
+    background-color: transparent; /* Make background transparent */
+    border: none; /* Remove border */
+    width: 40px; /* Set button width */
+    height: 40px; /* Set button height */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center content horizontally */
+    color: var(--NAVBTN-COLOR); /* Set button text color */
+    align-items: center; /* Center content vertically */
+}
+
+/* Styles for the menu icon */
+.header__menuIcon,
+.header__menuIcon::before,
+.header__menuIcon::after {
+    background-color: var(--NAVBTN-COLOR); /* Set background color */
+    width: 40px; /* Set width of the icon bars */
+    height: 5px; /* Set height of the icon bars */
+    border-radius: 5px; /* Round the corners */
+    position: absolute; /* Position absolutely within the button */
+    transition: all 0.5s; /* Animate transitions */
+    box-shadow: 0 0px 3px 1px var(--BORDER-COLOR-DARK); /* Add shadow effect */
+}
+
+/* Styles for the pseudo-elements of the menu icon */
+.header__menuIcon::before,
+.header__menuIcon::after {
+    content: ""; /* Required for pseudo-elements */
+}
+
+/* Position the top bar of the menu icon */
+.header__menuIcon::before {
+    transform: translate(0px, -12px); /* Move up */
+}
+
+/* Position the bottom bar of the menu icon */
+.header__menuIcon::after {
+    transform: translate(0px, 12px); /* Move down */
+}
+
+/* Change cursor to pointer on hover over the menu button */
+.header__menuBtn:hover {
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Scale down the button when active (clicked) */
+.header__menuBtn:active {
+    transform: scale(.9); /* Slightly reduce size */
+}
+
+/* Initially hide the donate button */
+.header__donateBtn {
+    display: none; /* Do not display the donate button */
+}
+
+/* Styles for the current page link */
+.currentPage {
+    color: var(--LINK-ACTIVE); /* Highlight active link color */
+}
+/* IMPACT SECTION */
+.impact {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 3em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/hands.png'); /* Background image */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Paragraph styles within the impact section */
+.impact__p {
+    text-align: center; /* Center text */
+    margin: 2em 0 3vw 0; /* Margin for spacing */
+    padding: 1em; /* Padding around the text */
+    max-width: 40em; /* Maximum width for the paragraph */
+    align-self: center; /* Center align in flex container */
+    border-radius: var(--BORDER-RADIUS); /* Rounded corners */
+    font-size: clamp(0.5em, 1.5vw, 1em); /* Responsive font size */
+    background-color: rgba(255, 252, 243, 0.5); /* Semi-transparent background */
+}
+
+/* Styles for BCC text in the impact section */
+.impact__bccText {
+    color: var(--BCC-COLOR); /* Text color */
+    font-size: 1.5em; /* Font size */
+}
+
+/* SERVICES SECTION */
+.serviceSection {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Styles for items in the service section */
+.flexbox__item--serviceSection {
+    color: #7d7d10; /* Text color */
+    background: rgba(211, 211, 211, 0.8); /* Semi-transparent background */
+    box-shadow: 0 0px 5px 1px var(--BORDER-COLOR-DARK); /* Shadow effect */
+}
+
+/* ABOUT SECTION */
+.aboutSection {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Styles for images in the about section */
+.aboutSection__img {
+    padding: 1em; /* Padding around the image */
+    margin-top: 3em; /* Top margin */
+    border-radius: 17em; /* Circular shape */
+    max-width: 33em; /* Maximum width */
+    height: auto; /* Maintain aspect ratio */
+    align-self: center; /* Center align in flex container */
+}
+
+/* Styles for text and button container in the about section */
+.aboutSection__textAndBtn {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    gap: 1.5em; /* Space between children */
+    justify-content: center; /* Center content vertically */
+    flex: 1 1 calc(33.33% - 2em); /* Flexible sizing for responsive layout */
+    min-width: 250px; /* Minimum width */
+    text-align: center; /* Center text */
+    padding: 0em 2em 2em 2em; /* Padding around the section */
+}
+/* Hidden button for more content */
+.hiddenMoreBtn {
+    display: none; /* Initially hidden */
+}
+
+/* FOOTER STYLES */
+.footer {
+    background-color: var(--BCC-COLOR); /* Footer background color */
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    gap: 0.5em; /* Space between items */
+    padding: 2em 3em 1em 3em; /* Padding around the footer */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.7); /* Inner shadow effect */
+    font-size: 80%; /* Font size */
+}
+
+/* Logo styles in the footer */
+.footer__logo {
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.75)); /* Shadow effect */
+    width: 20em; /* Logo width */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    align-self: center; /* Center the logo */
+}
+
+/* Address styles in the footer */
+.footer__address {
+    max-width: 16em; /* Maximum width for address */
+    align-self: center; /* Center align */
+}
+
+/* Flexbox container for footer items */
+.footer__flexbox {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-around; /* Space around items */
+    gap: 3em; /* Space between items */
+    padding-bottom: 2em; /* Bottom padding */
+}
+
+/* Styles for social icons */
+.socialIcons {
+    display: flex; /* Use flexbox layout */
+    flex-direction: row; /* Align items in a row */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    gap: 4vw; /* Space between icons */
+}
+
+/* Acknowledgement text in footer */
+.footer__acknowledgement {
+    line-height: 1.1em; /* Line height */
+    color: var(--NAVMENU-COLOR); /* Text color */
+}
+
+/* Phone link styles */
+.phoneLink {
+    color: var(--BTN-COLOR); /* Link color */
+}
+
+/* SERVICES PAGE STYLES */
+.service {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 15em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/research.png'); /* Background image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Hide the main heading in the service section */
+.servicemain h2 {
+    display: none; /* Hidden */
+}
+
+/* Styles for yellow container in service section */
+.servicemain .yellowCont h3 {
+    background-color: rgb(227, 227, 227, 1); /* Background color */
+    padding: 1em; /* Padding */
+    margin: 0; /* No margin */
+}
+
+/* Styles for paragraphs in the yellow container */
+.servicemain .yellowCont p {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.20)); /* Drop shadow effect */
+    background-color: rgb(227, 227, 227, 0.7); /* Background color */
+    font-size: clamp(1.2em, 1.5vw, 1.3em); /* Responsive font size */
+    padding: 1em; /* Padding */
+    max-width: 40em; /* Maximum width */
+    align-self: center; /* Center align */
+}
+
+/* ABOUT PAGE STYLES */
+.about {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 15em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/peoplegrass.png'); /* Background image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Styles for paragraphs in the About section */
+#About p {
+    padding: 0% 5% 5% 5%; /* Padding */
+    text-wrap: wrap; /* Wrap text */
+    font-size: clamp(1.2em, 1.5vw, 1.3em); /* Responsive font size */
+}
+
+/* Flexbox container for About section */
+.flexbox {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-items: center; /* Center items */
+    flex-wrap: wrap; /* Wrap items */
+}
+
+/* Flexbox items in About section */
+.flexbox div {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center align */
+}
+
+/* Image styles in flexbox */
+.flexbox img {
+    border-radius: var(--BORDER-RADIUS); /* Rounded corners */
+    margin: var(--MARGIN); /* Margin */
+    padding: var(--PADDING-HORIZONTAL); /* Horizontal padding */
+    width: 70%; /* Set width */
+    height: 70%; /* Set height */
+    filter: contrast(0.8); /* Reduce contrast */
+}
+
+/* Heading styles in flexbox */
+.flexbox h4 {
+    font-size: clamp(1.6em, 1.5vw, 1.3em); /* Responsive font size */
+    padding-bottom: 5%; /* Bottom padding */
+}
+
+/* SUPPORT PAGE STYLES */
+.support {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 15em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/support.png'); /* Background image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Styles for paragraphs in support section */
+#supportmain p {
+    padding: 5% 5% 5% 5%; /* Padding */
+    text-wrap: wrap; /* Wrap text */
+    font-size: clamp(1.2em, 1.5vw, 1em); /* Responsive font size */
+}
+
+/* Supporter image styles */
+.supporters img {
+    width: 50%; /* Set width */
+}
+
+/* Heading styles for supporters */
+.supporters h2 {
+    font-size: clamp(1.8em, 1.5vw, 2em); /* Responsive font size */
+    margin-bottom: 0; /* No bottom margin */
+}
+
+/* Flexbox for supporters */
+.supporters div {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+}
+
+/* CONTACT PAGE STYLES */
+.contact {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 15em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/write.png'); /* Background image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Styles for contact section */
+#contact {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Paragraph styles in contact section */
+#contact p {
+    padding: 5%; /* Padding */
+    font-size: clamp(1.3em, 1.5vw, 1.8em); /* Responsive font size */
+    text-align: center; /* Center text */
+}
+
+/* Input styles for various types */
+input[type='text'], [type='email'], [type='tel'], [type="number"], [type="date"], select, textarea {
+    background: rgba(210, 209, 207, 0.5); /* 50% transparent background */
+    border: #445ada; /* Border color */
+    color: #0c0c0c; /* Text color */
+    font-size: 1rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    letter-spacing: 0.27px; /* Letter spacing */
+    margin-bottom: 1em; /* Bottom margin */
+    width: 100%; /* Full width */
+    min-height: 3vh; /* Minimum height */
+    text-align: center; /* Center text */
+    border-radius: 1.8%; /* Rounded corners */
+    display: flex; /* Flexbox layout */
+    align-content: center; /* Align items center */
+    flex-wrap: wrap; /* Wrap items */
+}
+
+/* Styles for enquiry form */
+.enquiry-form {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    background-color: var(--YELLOWCONT-COLOR); /* Background color */
+    /* Note: Missing filter property */
+}
+
+/* Form styles */
+form {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    flex-wrap: wrap; /* Wrap items */
+    padding: 0 5% 0 5%; /* Padding */
+}
+
+/* Styles for form divs */
+form div {
+    display: flex; /* Use flexbox layout */
+    flex-direction: row; /* Align items in a row */
+    padding: 0 5% 0 5%; /* Padding */
+    flex-wrap: wrap; /* Wrap items */
+    justify-content: space-between; /* Space between items */
+}
+
+/* Label styles */
+label {
+    display: flex; /* Use flexbox layout */
+    font-weight: 800; /* Bold font weight */
+    font-size: clamp(1.3em, 1.5vw, 2em); /* Responsive font size */
+    justify-content: flex-start; /* Align to start */
+    padding: 2%; /* Padding */
+    width: 100%; /* Full width */
+    color: var(--BTN-COLOR); /* Text color */
+}
+
+/* Button styles in enquiry form */
+.enquiry-form button {
+    background-color: #5D73F5; /* Button background color */
+    color: #F5DF5D; /* Button text color */
+    border: none; /* No border */
+    display: inline-flex; /* Inline flex layout */
+    align-self: center; /* Center align */
+    border-radius: var(--BORDER-RADIUS); /* Rounded corners */
+    padding: 1.33% 2.67%; /* Padding */
+    font-size: 1em; /* Font size */
+    font-weight: bold; /* Bold text */
+    margin-top: 8%; /* Top margin */
+    margin-bottom: 20%; /* Bottom margin */
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.70)); /* Shadow effect */
+}
+
+/* DONATE PAGE STYLES */
+.donation {
+    top: 0; /* Position at the top */
+    display: flex; /* Use flexbox layout */
+    padding-top: 15em; /* Top padding */
+    padding-bottom: 3%; /* Bottom padding */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--BGCOLOR); /* Background color */
+    background-image: url('/img/donate.png'); /* Background image */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Cover the entire area */
+}
+
+/* Heading styles for donation page */
+.donationh1 {
+    text-align: center; /* Center text */
+    padding-top: 5%; /* Top padding */
+    padding-bottom: 5%; /* Bottom padding */
+    color: var(--BTN-COLOR); /* Text color */
+}
+
+/* Label styles in donation form */
+.donation-form label {
+    color: #0b0b0b; /* Text color */
+    flex-wrap: nowrap; /* No wrapping */
+}
+
+/* Button group styles */
+.button-group {
+    padding: 0; /* No padding */
+    display: flex; /* Use flexbox layout */
+    flex-direction: row; /* Align items in a row */
+    text-wrap: nowrap; /* No wrapping */
+    padding: 10% 0; /* Vertical padding */
+}
+
+/* Donation form styles */
+.donation-form form {
+    display: flex; /* Use flexbox layout */
+    flex-direction: column; /* Stack children vertically */
+    background-color: var(--YELLOWCONT-COLOR); /* Background color */
+}
+
+/* Button styles in donation form */
+.donation-form button {
+    background-color: #5D73F5; /* Button background color */
+    color: #F5DF5D; /* Button text color */
+    border: none; /* No border */
+    display: inline-flex; /* Inline flex layout */
+    align-self: center; /* Center align */
+    border-radius: var(--BORDER-RADIUS); /* Rounded corners */
+    padding: 1.33% 2.67%; /* Padding */
+    font-size: 1em; /* Font size */
+    font-weight: bold; /* Bold text */
+    margin-top: 8%; /* Top margin */
+    margin-bottom: 20%; /* Bottom margin */
+    filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.70)); /* Shadow effect */
+}
+
+/*-------------------------------- MEDIA QUERIES --------------------------------*/
+
+/* Styles for screens 768px and wider */
+@media screen and (min-width: 768px) {
+    .nav__ul {
+        font-weight: 600; /* Font weight */
+        gap: 5em; /* Space between items */
+        filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.75)); /* Shadow effect */
+        background-color: var(--HEADER-BGCOLOR); /* Header background color */
+        align-self: center; /* Center align */
+        transform-origin: top center; /* Transformation origin */
+        list-style-type: none; /* No list style */
+        display: flex; /* Use flexbox layout */
+        flex-direction: row; /* Align items in a row */
+    }
+
+    .nav__donateLink {
+        display: none; /* Hidden */
+    }
+    
+    p {
+        text-align: left; /* Align text to the left */
+    }
+
+    .footer__address p {
+        text-align: center; /* Center text */
+    }
+    
+    .header__donateBtn {
+        display: flex; /* Show button */
+    }
+
+    .header__nav {
+        justify-content: space-between; /* Space between items */
+        flex-direction: row; /* Align items in a row */
+    }
+
+    .header__menuBtn {
+        display: none; /* Hidden */
+    }
+
+    .header__btnTxt {
+        display: none; /* Hidden */
+    }
+
+    .flexboxMain {
+        flex-direction: row; /* Align items in a row */
+        gap: 3em; /* Space between items */
+    }
+
+    .yellowCont {
+        padding: 3em; /* Padding */
+        box-shadow: 0 0px 10px 1px var(--BORDER-COLOR-LIGHT); /* Shadow effect */
+    }
+
+    .flexbox__item--serviceSection {
+        border-radius: var(--BORDER-RADIUS); /* Rounded corners */
+    }
+
+    #thirdServiceItem {
+        display: none; /* Hidden */
+    }
+
+    .hiddenMoreBtn {
+        display: flex; /* Show button */
+    }
+
+    .aboutSection__textAndBtn {
+        padding: 0; /* No padding */
+    }
+    
+    .aboutSection__img {
+        padding: 0; /* No padding */
+    }
+    
+    .socialIcons {
+        justify-content: space-between; /* Space between icons */
+        gap: 1em; /* Space between icons */
+    }
+
+    .footer__flexbox {
+        flex-direction: row; /* Align items in a row */
+        justify-content: space-between; /* Space between items */
+        gap: 7em; /* Space between items */
+    }
+    
+    .servicemain .yellowCont div {
+        display: flex; /* Use flexbox layout */
+        flex-direction: row; /* Align items in a row */
+        padding-top: 5%; /* Top padding */
+    }
+
+    .servicemain .yellowCont h3 {
+        width: 30vw; /* Set width */
+        font-size: clamp(2em, 1.5vw, 5em); /* Responsive font size */
+        display: flex; /* Use flexbox layout */
+        justify-content: flex-start; /* Align to start */
+        align-items: center; /* Center align */
+    }
+
+    .servicemain .yellowCont p {
+        width: 70vw; /* Set width */
+    }
+
+    .flexbox {
+        display: flex; /* Use flexbox layout */
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: wrap; /* Wrap items */
+        justify-content: space-evenly; /* Space evenly */
+        gap: 0; /* No gap */
+    }
+
+    .flexbox div {
+        flex: 0 0 48%; /* Flexible width */
+    }   
+
+    .supporters {
+        display: flex; /* Use flexbox layout */
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: wrap; /* Wrap items */
+        justify-content: space-evenly; /* Space evenly */
+    }
+
+    .supporters div {
+        flex: 0 0 48%; /* Flexible width */
+    } 
+
+    .supporters img {
+        width: 70%; /* Set width */
+    }
+}
+
+/* Styles for screens 1024px and wider */
+@media screen and (min-width: 1024px) {
+    .header__btnTxt {
+        display: flex; /* Show button text */
+    }
+   
+    #thirdServiceItem {/*make it visible again*/
+        display:block;
+        
+    }
+
+    .flexboxMain {
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: nowrap; /* No wrapping */
+        margin: 5%; /* Margin */
+        gap: 1px; /* Gap */
+    }
+
+    .flexbox__itemMain {
+        margin: 1%; /* Margin */
+    }
+    .flexbox{
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: nowrap; /* No wrapping */
+        margin: 5%; /* Margin */
+        gap: 1px; /* Gap */
+    }
+
+    .flexbox__item {
+        margin: 1%; /* Margin */
+    }
+    
+        
+    .flexbox div {
+        flex: 1 1 auto; /* Flexible width */
+    }
+
+    .flexbox p {
+        font-size: 0.8em; /* Font size */
+    }
+
+    .supporters {
+        flex-direction: row; /* Align items in a row */
+        flex-wrap: nowrap; /* No wrapping */
+    }
+
+    .supporters div {
+        flex: 1 1 auto; /* Flexible width */
+    }
+
+    #supportmain {
+        font-size: 0.9em; /* Font size */
+    }
+
+    .enquiry-form h2 {
+        margin-bottom: 15%; /* Bottom margin */
+        padding-left: 5%; /* Left padding */
+        font-size: 32px; /* Font size */
+    }
+
+    .enquiry-form {
+        flex-direction: row; /* Align items in a row */
+        align-items: center; /* Center align */
+    }
+
+    form {
+        padding-top: 100px; /* Top padding */
+    }
+
+    .content {
+        display: flex; /* Use flexbox layout */
+        flex-direction: row; /* Align items in a row */
+    }
+
+    .donationh1 {
+        padding-top: 50%; /* Top padding */
+        padding-left: 5%; /* Left padding */
+        padding-right: 5%; /* Right padding */
+        background-image: url(img/peoplegrass.png); /* Background image */
+        background-size: cover; /* Cover background */
+        background-repeat: no-repeat; /* Do not repeat */
+        filter: sepia(40%); /* Sepia filter */
+        color: whitesmoke; /* Text color */
+    }
+
+    .donationh1 h1 {
+        font-size: 32px; /* Font size */
+    }
+}
+

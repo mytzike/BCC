@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact BCC</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+    <header class="header">
+        <section class="contact">
+            <h1 class="header__h1 nowrap">Enquiries
+            </h1>
+        </section>
+        <nav class="header__nav">
+            <img src="img/logo.svg" alt="companylogo" class="header__logo" width="200" height="70">
+            <ul class="nav__ul">
+                <li><a href="/">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="supporters.html">Supporters</a></li>
+                <li><a class="currentPage" href="contact.html">Contact</a></li>
+                <li><a class="nav__donateLink" href="donation.html">Donate</a></li>
+            
+            </ul> 
+            <a class="blueBtn header__donateBtn" href="donation.html">
+                <span class="blueBtn__heartSymbol">♡</span> 
+                <span class="blueBtn__btnTxt header__btnTxt uppercase">Donate</span>
+            </a>
+            <div class="header__menuBtn" onclick="toggleMenu()">
+                <div class="header__menuIcon"></div>
+
+            </div>        
+        </nav>
+            
+
+    </header>
+   
+<!--This file has contact form that has possibilities to interact with created database and server side validation through POST method  -->
+    <section id="contact">
+        <p>Feel free to leave your enquiry down below and we will get back to you as soon as possible.</p>
+    
+
+        <div class="enquiry-form">
+            <h2>Tell us what you think</h2>
+            <form action="/submit-enquiry" method="POST">
+                <div>
+                    <label for="name">Name:</label><!--the name of the input box  -->
+                    <input type="text" id="name" name="name" required placeholder="Your Name"><!--  here I also used placeholdertext-->
+                        <!-- input is a function in html that creates a box for userinput -->
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required placeholder="Your Email">
+        
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+        
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" rows="4" required placeholder="Your Message"></textarea>
+                </div>
+                <button class='blueBtn' type="submit">Submit</button>
+            </form>
+        </div>
+       
+    </section>
+    <footer class="footer">
+        <div class="footer__flexbox">
+        <!--Logo comes here-->
+            <img src="img/logo.svg" alt="companylogo" class="footer__logo" width="200" height="70">
+
+        <div class="socialIcons">
+            <!--Socialmedia icons-->
+            <a href="https://www.facebook.com/bccimpact" target="_blank">
+                <img src="img/facebookicon.png" alt="facebook icon" width="20" height="20"></a>
+            <a href="https://www.instagram.com/thebcc_au" target="_blank">
+            <img src="img/instagram-icon.png" alt="instagram icon" width="20" height="20"></a>
+            <a href="https://www.twitter.com/TheBCC_Org" target="_blank">
+            <img src="img/twitter-icon.png" alt="twitter icon" width="20" height="20"></a>
+            <a href="https://www.youtube.com/channel/UCTP0fSUjONd0N8jEH5Pz5ug" target="_blank">
+            <img src="img/youtube-icon.png" alt="youtube icon" width="20" height="20"></a>
+            <a href="https://www.linkedin.com/company/the-behaviour-change-collaborative/" target="_blank">
+            <img src="img/linkedin-icon.png" alt="linkedin icon" width="20" height="20"></a>
+        </div>
+        <div class="footer__address center">
+           <p><span><b>The Behaviour Change Collaborative</b></span></p>
+                <p>Suite 2, Ground Floor
+                1318 Hay Street
+                West Perth WA 6005</p>
+                <a href="tel:+610863316057"><span class=phoneLink>+61 08 6331 6057</span></a>
+        </div>
+    </div>
+            <p class="footer__acknowledgement">The BCC Impact acknowledges the Traditional Owners of the land where we work and pay our respects to elders past, present and emerging.</p>
+            
+            <p class="footer__acknowledgement">&copy; This was a university project by Daisy Leming and the reference list is here:<a href="References.pdf" download> Download the PDF file</a></p>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+            nav.classList.toggle('active');
+        }
+    
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav__ul');
+            const menuBtn = document.querySelector('.header__menuBtn');
+    
+            // Check if the clicked target is outside the nav and the menu button
+            if (!nav.contains(event.target) && !menuBtn.contains(event.target)) {
+                nav.classList.remove('active'); // Close the menu
+            }
+        });
+    
+        // Event listener for window resize to close the menu
+        window.addEventListener('resize', function() {
+            const nav = document.querySelector('.nav__ul');
+            nav.classList.remove('active'); // Close the menu on resize
+        });
+    </script>
+</body>
+</html>
